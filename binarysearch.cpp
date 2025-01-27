@@ -24,7 +24,7 @@ void binarysearch(vector<int> &arr,int &target){
 
 int main(){
     srand(time(NULL));
-    int p=rand()%7;
+    int p=rand()%5;
     long long len=1;
     for(int i=0;i<p;i++) len*=10;
     cout<<"The Length of the Array is : "<<len<<endl;
@@ -41,8 +41,5 @@ int main(){
     cout<<endl<<"Enter the Number to Find : ";
     cin>>target;
     binarysearch(arr,target);
-    for(auto &val:arr){
-        cout<<val<<" ";
-    }
     return 0;
 }
