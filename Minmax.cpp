@@ -1,14 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+int count1=0;
 pair<int,int> findminmax(vector<int> &arr,int low,int high,pair<int,int> minmax){
     int mid;
-    if(low==high) {
+    if(low==high){
         minmax.first=arr[low];
         minmax.second=arr[low];
         return minmax;
     }
-    if(high==low + 1){
+    if(high==low+1){
+        count1++;
         if(arr[low]>arr[high]) {
             minmax.second=arr[low];
             minmax.first=arr[high];
@@ -22,8 +23,10 @@ pair<int,int> findminmax(vector<int> &arr,int low,int high,pair<int,int> minmax)
     mid=(low+high)/2;
     pair<int,int> temp1=findminmax(arr,low,mid,minmax);
     pair<int,int> temp2=findminmax(arr,mid+1,high,minmax);
+    count1++;
     if(temp1.first<temp2.first) minmax.first=temp1.first;
     else minmax.first=temp2.first;
+    count1++;
     if(temp1.second>temp2.second) minmax.second=temp1.second;
     else minmax.second=temp2.second;
     return minmax;
@@ -35,5 +38,7 @@ int main(){
     pair<int,int> ans=findminmax(arr,0,size-1,{0,0});
     cout<<"Minimum element is "<<ans.first<<endl;
     cout<<"Maximum element is "<<ans.second<<endl;
+    cout<<"Number of Comparisons : "<<count1<<endl;
+    cout<<"Number of Comparisons (3n/2-2) : "<<(((3*size)/2)-2)<<endl;
     return 0;
 }
