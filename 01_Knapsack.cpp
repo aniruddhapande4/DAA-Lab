@@ -22,5 +22,6 @@ int main() {
         }
         cout<<endl;
     }
+    cout<<"Maximum Value is: "<<dp[n][W]<<endl;
     return 0;
 }
